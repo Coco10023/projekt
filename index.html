@@ -1,13 +1,81 @@
 <!doctype html>
-<html lang="en">
+<html lang="sv">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>projekt</title>
+    <title>WeatherTrip</title>
+    <meta
+      name="description"
+      content="Sök efter en plats och få väder, karta och aktivitetsförslag."
+    />
+    <script type="module" src="./js/main.js"></script>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <header class="hero">
+      <div class="container hero__content">
+        <h1>WeatherTrip</h1>
+        <p class="lead">
+          En webbapp för resenärer som vill se väder, karta och passande aktiviteter.
+        </p>
+
+        <form id="search-form" class="search-form">
+          <label for="city" class="sr-only">Sök ort</label>
+          <input
+            id="city"
+            name="city"
+            type="text"
+            placeholder="Sök ort, till exempel Sundsvall"
+            autocomplete="off"
+            required
+          />
+          <button type="submit">Sök</button>
+        </form>
+
+        <div class="recent-searches">
+          <h2>Senaste sökningar</h2>
+          <div id="recent-searches-list" class="recent-searches__list"></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container main-content">
+      <section id="status" class="status" aria-live="polite"></section>
+
+      <section id="loader" class="loader hidden" aria-live="polite">
+        <div class="spinner"></div>
+        <p>Hämtar data...</p>
+      </section>
+
+      <section id="result" class="result hidden">
+        <div class="card place-card">
+          <h2 id="place-name"></h2>
+          <p id="place-meta"></p>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="card weather-card">
+            <h3>Nuvarande väder</h3>
+            <p id="current-temp" class="temp"></p>
+            <p id="current-desc"></p>
+            <p id="current-wind"></p>
+          </article>
+
+          <article class="card activity-card">
+            <h3>Aktivitetsförslag</h3>
+            <ul id="activity-list"></ul>
+          </article>
+        </div>
+
+        <article class="card map-card">
+          <h3>Karta</h3>
+          <div id="map" class="map"></div>
+        </article>
+
+        <article class="card forecast-card">
+          <h3>3-dygnsprognos</h3>
+          <div id="forecast-list" class="forecast-list"></div>
+        </article>
+      </section>
+    </main>
   </body>
 </html>
