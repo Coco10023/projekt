@@ -18,3 +18,20 @@ export function getRecentSearches() {
     return [];
   }
 }
+
+/**
+ * Sparar en ny sökning i localStorage.
+ * @param {string} city - Söksträng att spara.
+ * @returns {void}
+ */
+export function saveRecentSearch(city) {
+  const current = getRecentSearches();
+  const normalizedCity = city.trim();
+
+  const updated = [
+    normalizedCity,
+    ...current.filter((item) => item.toLowerCase() !== normalizedCity.toLowerCase())
+  ].slice(0, MAX_ITEMS);
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+}
