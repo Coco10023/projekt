@@ -87,3 +87,18 @@ export function getActivities(code, temperature) {
     "Värm dig på ett café"
   ];
 }
+
+/**
+ * Formaterar datum till svensk läsbar text.
+ * @param {string} dateString - Datumsträng i format YYYY-MM-DD.
+ * @returns {string} Formaterat datum.
+ */
+export function formatDate(dateString) {
+  const date = new Date(dateString);
+
+  return date.toLocaleDateString("sv-SE", {
+    weekday: "long",
+    day: "numeric",
+    month: "long"
+  });
+}
