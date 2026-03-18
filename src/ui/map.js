@@ -19,3 +19,26 @@ export function initMap() {
     attribution: "&copy; OpenStreetMap contributors"
   }).addTo(map);
 }
+
+/**
+ * Uppdaterar kartans position och markör.
+ * @param {number} latitude - Latitud.
+ * @param {number} longitude - Longitud.
+ * @param {string} label - Text för markören.
+ * @returns {void}
+ */
+export function updateMap(latitude, longitude, label) {
+  initMap();
+
+  map.setView([latitude, longitude], 11);
+
+  if (marker) {
+    marker.remove();
+  }
+
+  marker = L.marker([latitude, longitude]).addTo(map).bindPopup(label).openPopup();
+
+  setTimeout(() => {
+    map.invalidateSize();
+  }, 100);
+}
