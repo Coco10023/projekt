@@ -28,3 +28,62 @@ export function getWeatherDescription(code) {
 
   return map[code] || "Okänt väder";
 }
+
+
+/**
+ * Ger aktivitetsförslag beroende på väder och temperatur.
+ * @param {number} code - Weather code.
+ * @param {number} temperature - Aktuell temperatur.
+ * @returns {string[]} Lista med aktiviteter.
+ */
+export function getActivities(code, temperature) {
+  const rainyCodes = [51, 53, 55, 61, 63, 65, 80, 81, 82];
+  const snowyCodes = [71, 73, 75];
+  const thunderCodes = [95];
+
+  if (thunderCodes.includes(code)) {
+    return [
+      "Besök museum eller galleri",
+      "Välj inomhusaktiviteter",
+      "Undvik längre vistelser utomhus"
+    ];
+  }
+
+  if (snowyCodes.includes(code)) {
+    return [
+      "Ta en vinterpromenad",
+      "Fotografera vintermiljön",
+      "Planera ett cafébesök efteråt"
+    ];
+  }
+
+  if (rainyCodes.includes(code)) {
+    return [
+      "Besök ett museum eller shoppingcenter",
+      "Planera restaurang- eller cafébesök",
+      "Ta med paraply om du går ut"
+    ];
+  }
+
+  if (temperature >= 20) {
+    return [
+      "Ta en stadspromenad",
+      "Ät på uteservering",
+      "Utforska parker och utsiktsplatser"
+    ];
+  }
+
+  if (temperature >= 10) {
+    return [
+      "Promenera i centrum",
+      "Besök sevärdheter utomhus",
+      "Ta en kortare utflykt"
+    ];
+  }
+
+  return [
+    "Välj inomhusattraktioner",
+    "Ta en kort promenad med varma kläder",
+    "Värm dig på ett café"
+  ];
+}
