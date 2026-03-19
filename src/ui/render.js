@@ -101,3 +101,22 @@ export function renderWeatherApp(location, weather) {
 
   resultEl.classList.remove("hidden");
 }
+
+/**
+ * Renderar knappar för senaste sökningar.
+ * @param {string[]} searches - Lista med sökningar.
+ * @returns {void}
+ */
+export function renderRecentSearches(searches) {
+  if (searches.length === 0) {
+    recentSearchesListEl.innerHTML = "<p>Inga tidigare sökningar.</p>";
+    return;
+  }
+
+  recentSearchesListEl.innerHTML = searches
+    .map(
+      (search) =>
+        `<button type="button" class="recent-search-btn" data-city="${search}">${search}</button>`
+    )
+    .join("");
+}
