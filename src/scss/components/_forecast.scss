@@ -1,0 +1,21 @@
+.forecast-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.forecast-item {
+  background: #f8fbfd;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  animation: slideUp 0.35s ease;
+}
+
+.forecast-item h4 {
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  .forecast-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
