@@ -1,0 +1,29 @@
+@use "../base/variables" as *;
+
+.result {
+  animation: fadeIn 0.45s ease;
+}
+
+.card {
+  background: $color-surface;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.place-card p {
+  margin-bottom: 0;
+  color: $color-muted;
+}
+
+.temp {
+  font-size: 2.75rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+
+.activity-card ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
