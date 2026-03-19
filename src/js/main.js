@@ -93,3 +93,17 @@ async function handleRecentSearchClick(event) {
     await runSearch(city);
   }
 }
+
+/**
+ * Initierar appen.
+ * @returns {void}
+ */
+function init() {
+  form.addEventListener("submit", handleSubmit);
+  recentSearchesContainer.addEventListener("click", handleRecentSearchClick);
+
+  renderRecentSearches(getRecentSearches());
+  initMap();
+}
+
+init();
