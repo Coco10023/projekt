@@ -15,3 +15,14 @@ const currentWindEl = document.querySelector("#current-wind");
 const activityListEl = document.querySelector("#activity-list");
 const forecastListEl = document.querySelector("#forecast-list");
 const recentSearchesListEl = document.querySelector("#recent-searches-list");
+
+/**
+ * Visar statusmeddelande.
+ * @param {string} message - Meddelande att visa.
+ * @param {"info"|"error"} type - Typ av meddelande.
+ * @returns {void}
+ */
+export function renderStatus(message, type = "info") {
+  statusEl.textContent = message;
+  statusEl.className = `status ${type}`;
+}
