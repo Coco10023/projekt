@@ -26,3 +26,28 @@ export function renderStatus(message, type = "info") {
   statusEl.textContent = message;
   statusEl.className = `status ${type}`;
 }
+
+/**
+ * Rensar statusmeddelande.
+ * @returns {void}
+ */
+export function clearStatus() {
+  statusEl.textContent = "";
+  statusEl.className = "status";
+}
+
+/**
+ * Visar loader.
+ * @returns {void}
+ */
+export function showLoader() {
+  loaderEl.classList.remove("hidden");
+}
+
+/**
+ * Döljer loader.
+ * @returns {void}
+ */
+export function hideLoader() {
+  loaderEl.classList.add("hidden");
+}
