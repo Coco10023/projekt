@@ -17,3 +17,13 @@ import {
 const form = document.querySelector("#search-form");
 const cityInput = document.querySelector("#city");
 const recentSearchesContainer = document.querySelector("#recent-searches-list");
+
+/**
+ * Hanterar formulärets submit.
+ * @param {SubmitEvent} event - Submit-event.
+ * @returns {Promise<void>}
+ */
+async function handleSubmit(event) {
+  event.preventDefault();
+  await runSearch(cityInput.value.trim());
+}
