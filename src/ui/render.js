@@ -51,3 +51,53 @@ export function showLoader() {
 export function hideLoader() {
   loaderEl.classList.add("hidden");
 }
+
+/**
+ * Döljer resultatsektionen.
+ * @returns {void}
+ */
+export function hideResult() {
+  resultEl.classList.add("hidden");
+}
+
+
+/**
+ * Renderar väderappens innehåll.
+ * @param {Object} location - Platsdata.
+ * @param {Object} weather - Väderdata.
+ * @returns {void}
+ */
+export function renderWeatherApp(location, weather) {
+  const current = weather.current;
+  const daily = weather.daily;
+
+  placeNameEl.textContent = location.name;
+  placeMetaEl.textContent =
+    `${location.country || ""}` +
+    `${location.admin1 ? `, ${location.admin1}` : ""}` +
+    ` · lat ${location.latitude.toFixed(2)}, lon ${location.longitude.toFixed(2)}`;
+
+  currentTempEl.textContent = `${Math.round(current.temperature_2m)}°C`;
+  currentDescEl.textContent = getWeatherDescription(current.weather_code);
+  currentWindEl.textContent = `Vind: ${Math.round(current.wind_speed_10m)} m/s`;
+
+  const activities = getActivities(current.weather_code, current.temperature_2m);
+  activityListEl.innerHTML = activities.map((item) => `<li>${item}</li>`).join("");
+
+  forecastListEl.innerHTML = daily.time
+    .map((date, index) => {
+      const description = getWeatherDescription(daily.weather_code[index]);
+
+      return `
+        <div class="forecast-item">
+          <h4>${formatDate(date)}</h4>
+          <p>${description}</p>
+          <p>Min: ${Math.round(daily.temperature_2m_min[index])}°C</p>
+          <p>Max: ${Math.round(daily.temperature_2m_max[index])}°C</p>
+        </div>
+      `;
+    })
+    .join("");
+
+  resultEl.classList.remove("hidden");
+}
