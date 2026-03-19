@@ -2,7 +2,7 @@ import {
   formatDate,
   getActivities,
   getWeatherDescription
-} from "../utils/formatters.js";
+} from "../js/utils/formatters";
 
 const statusEl = document.querySelector("#status");
 const loaderEl = document.querySelector("#loader");
