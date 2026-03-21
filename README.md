@@ -1,8 +1,5 @@
 # WeatherTrip: https://coco10023.github.io/projekt/ 
 
-## Rapport
-Rapporten finns i projektets rot: `Projektuppgift Frontendutveckling Francisco`
-
 WeatherTrip är en webbapp som låter användaren söka efter en ort och få:
 - platsinformation
 - aktuell väderdata
@@ -26,3 +23,6 @@ npm run dev
 
 ## Build
 npm run build
+
+## Rapport
+Rapporten finns i projektets rot: `Projektuppgift Frontendutveckling Francisco.pdf`
